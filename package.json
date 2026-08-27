@@ -1,0 +1,32 @@
+{
+  "name": "eazo-scroll-to-space",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "D2-entry engineering workspace for five Eazo mobile-first experiences.",
+  "license": "MIT",
+  "packageManager": "pnpm@11.24.0",
+  "engines": {
+    "node": ">=24.20.0 <27",
+    "pnpm": "11.24.0"
+  },
+  "scripts": {
+    "build": "pnpm --filter @eazo/scroll-to-space build",
+    "dev": "pnpm --filter @eazo/scroll-to-space dev",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "lint": "oxlint --no-ignore --deny-warnings packages apps tests scripts",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "manifest:validate": "node scripts/validate-manifests.mjs scroll-to-space",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm manifest:validate && pnpm build"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@types/node": "24.10.1",
+    "@vitest/coverage-v8": "4.1.11",
+    "oxlint": "1.80.0",
+    "typescript": "6.0.3",
+    "vite": "8.2.2",
+    "vitest": "4.1.11"
+  }
+}

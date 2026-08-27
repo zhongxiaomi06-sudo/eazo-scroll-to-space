@@ -1,0 +1,2 @@
+import { defineConfig, devices } from '@playwright/test';
+export default defineConfig({testDir:'./tests/e2e',reporter:[['html',{open:'never'}],['list']],webServer:{command:'pnpm dev --host 127.0.0.1',port:5102,reuseExistingServer:true},use:{baseURL:'http://127.0.0.1:5102',trace:'retain-on-failure',screenshot:'only-on-failure'},projects:[{name:'pixel',metadata:{app:'space'},use:{...devices['Pixel 7']}},{name:'iphone',metadata:{app:'space'},use:{...devices['iPhone 12']}}]});
