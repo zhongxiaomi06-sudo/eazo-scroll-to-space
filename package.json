@@ -15,7 +15,7 @@
     "pnpm": "11.24.0"
   },
   "scripts": {
-    "build": "npm run build --workspace=@eazo/scroll-to-space",
+    "build": "npm run build --workspace=@eazo/scroll-to-space && node scripts/copy-dist.mjs",
     "dev": "pnpm --filter @eazo/scroll-to-space dev",
     "typecheck": "pnpm -r --if-present typecheck",
     "lint": "oxlint --no-ignore --deny-warnings packages apps tests scripts",
