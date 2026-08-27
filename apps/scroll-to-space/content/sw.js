@@ -1,5 +1,5 @@
-const CACHE = 'scroll-to-space-v1.0.0-rc1';
-const SHELL = ['./', './index.html', './fixture.json', './rights-ledger.tsv', './data-manifest.json', './og.png'];
+const CACHE = 'scroll-to-space-v1.1.0-visual2';
+const SHELL = ['./', './index.html', './fixture.json', './rights-ledger.tsv', './data-manifest.json', './og.png', './ascent-portrait-v2.jpg', './nasa-earth-limb.jpg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));

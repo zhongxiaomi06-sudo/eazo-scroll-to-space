@@ -61,3 +61,19 @@ test('mobile layout has no horizontal overflow or clipped primary action', async
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
 });
+
+test('mobile journey keeps stage, story, and thumb controls separated inside the viewport', async ({ page }) => {
+  await page.getByRole('button', { name: 'Begin ascent' }).click();
+  const [rail, card, controls] = await Promise.all([
+    page.locator('.stage-rail').boundingBox(),
+    page.locator('.chapter-card').boundingBox(),
+    page.locator('.journey-controls').boundingBox(),
+  ]);
+  expect(rail).not.toBeNull();
+  expect(card).not.toBeNull();
+  expect(controls).not.toBeNull();
+  expect(rail!.y + rail!.height).toBeLessThan(card!.y);
+  expect(card!.y + card!.height).toBeLessThanOrEqual(controls!.y);
+  expect(controls!.y + controls!.height).toBeLessThanOrEqual(await page.evaluate(() => innerHeight));
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+});

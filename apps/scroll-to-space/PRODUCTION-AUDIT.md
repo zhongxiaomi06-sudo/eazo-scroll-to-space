@@ -1,13 +1,13 @@
 # Scroll to Space — Production Test & Audit
 
 **Audit date:** 2026-08-27  
-**Release:** 1.0.0-rc.1  
+**Release:** 1.1.0-rc.2  
 **Stage:** D2-exit  
 **Decision:** CONDITIONAL PASS; D3 is not yet authorized.
 
 ## Executive result
 
-The Product 2 production candidate is functionally complete against `SPACE-REQ-001`–`008`. Six domain/contract tests and twelve mobile browser journeys pass. Production build, TypeScript, lint, content-manifest integrity, mobile overflow, source completeness, non-visual navigation, static fallback, audio denial, and Eazo share entry are verified.
+The Product 2 production candidate is functionally complete against `SPACE-REQ-001`–`008`. The visual system was rebuilt after a second mobile-first audit. Fourteen unit/domain checks (six product-specific) and fourteen product mobile-browser journeys pass. Production build, TypeScript, lint, content-manifest integrity, mobile overflow, control separation, source completeness, non-visual navigation, static fallback, audio denial, and Eazo share entry are verified.
 
 The program-level matrix contains 46 requirements across five separate products. This audit does not mislabel the other 38 products' requirements as Product 2 work; Product 2 owns eight requirements, all eight are implemented and tested here.
 
@@ -28,17 +28,17 @@ The program-level matrix contains 46 requirements across five separate products.
 
 | Suite | Environment | Result |
 |---|---|---|
-| Domain and content contracts | Vitest / Node 24.20.0 | 6/6 PASS |
-| Product mobile journey | Playwright Pixel 7 / Chromium | 6/6 PASS |
-| Product mobile journey | Playwright iPhone 12 / WebKit | 6/6 PASS |
+| Unit and domain contracts | Vitest / Node 24.20.0 | 14/14 PASS; 6 Product 2 + 8 shared platform |
+| Product mobile journey | Playwright Pixel 7 / Chromium | 7/7 PASS |
+| Product mobile journey | Playwright iPhone 12 / WebKit | 7/7 PASS |
 | Type safety | TypeScript 6.0.3 strict | PASS |
 | Static analysis | Oxlint, warnings denied | PASS |
-| Content integrity | DataManifest SHA-256 / rights / total bytes | PASS; 4 files, 1,845,173 bytes |
+| Content integrity | DataManifest SHA-256 / rights / total bytes | PASS; 6 files, 2,415,285 bytes |
 | Production build | Vite 8.2.2 | PASS |
 | JavaScript budget | Production gzip | 313.23 KB / 700 KB limit, PASS |
 | Mandatory cache budget | Manifest total | 1.85 MB / 25 MB limit, PASS |
 | Visual QA | Chrome desktop 1440×756 | PASS; no clipping/overlap observed |
-| Visual QA | Chrome responsive 390×844 | PASS; CTA in first viewport; no horizontal overflow |
+| Visual QA | Pixel 7 + iPhone 12 mobile viewports | PASS; CTA in first viewport; no horizontal overflow; stage rail, story sheet, and thumb controls do not overlap |
 
 The monorepo-wide `pnpm verify` was also attempted. Product 2 passed its portion; the aggregate command stopped in concurrently modified Product 5 code at `Navigator.deviceMemory`. That unrelated error is not counted as a Product 2 failure and is intentionally not edited in this repository.
 
@@ -49,6 +49,8 @@ The monorepo-wide `pnpm verify` was also attempted. Product 2 passed its portion
 - The UI explicitly states that 100 km is a convention rather than a natural wall.
 - The UI labels the visual scale as logarithmic and objects as illustrative.
 - Beijing/DC artwork is procedural CSS/WebGL authored for this product; no street-view imagery or third-party city models ship.
+- The launch now uses one project-generated portrait atmosphere asset tuned for mobile-safe UI cropping. Its generation ID and prompt provenance are recorded in the rights ledger.
+- S4/S5 use a locally cached NASA Scientific Visualization Studio Earth-limb image with an on-screen credit and a ledger entry linked to the official source and NASA media-use terms.
 - The social image is a single project-generated asset with its generation ID recorded in the rights ledger.
 - Runtime Google Fonts were removed. The core offline journey has zero third-party runtime asset requests; source links open only after user action.
 
@@ -68,8 +70,8 @@ This verifies a real SDK integration, not a completed Eazo Creator import. Creat
 | Criterion | Evidence | Result |
 |---|---|---|
 | Three-second comprehension | One statement, two city choices, one acid-green CTA; CTA visible at 390×844 | PASS |
-| Mobile-first hierarchy | 58 px compact header, first-viewport launch action, 44 px journey controls, safe responsive rails | PASS |
-| Distinctive visual language | Near-black scientific editorial field, chartreuse instrumentation, ember typography, procedural Earth limb | PASS |
+| Mobile-first hierarchy | 54 px compact header, one-viewport city choice, 58 px thumb controls, non-overlapping stage rail and bottom story sheet | PASS |
+| Distinctive visual language | Near-black scientific editorial field, chartreuse instrumentation, ember typography, portrait atmosphere journey, and sourced orbital Earth photography | PASS |
 | Core delight | City lights fall away into a curved Earth; motion materially communicates scale | PASS |
 | Useful result | 408 km completion summary, discoveries count, sources, switch-city comparison | PASS |
 | Remix stimulus | City choice changes opening assets/copy and prompts a second journey | PASS |

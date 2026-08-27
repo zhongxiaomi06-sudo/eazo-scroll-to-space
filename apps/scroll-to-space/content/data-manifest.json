@@ -1,8 +1,8 @@
 {
   "manifestVersion": 1,
   "appId": "scroll-to-space",
-  "buildVersion": "1.0.0-rc.1",
-  "contentVersion": "2026-08-27.production.1",
+  "buildVersion": "1.1.0-rc.2",
+  "contentVersion": "2026-08-27.visual.2",
   "schemaVersions": {
     "fixture": 1,
     "rightsLedger": 1
@@ -22,8 +22,8 @@
     },
     {
       "path": "rights-ledger.tsv",
-      "sha256": "5483713ba47745a2e1f3e62c2308d5d54afca899208e8d5affa1947f683fb32f",
-      "bytes": 1263,
+      "sha256": "9ef9a4496a32d72d947effb2b3ef9a708e2a7a3305e60d6312204eb090b5daa4",
+      "bytes": 1577,
       "contentType": "text/tab-separated-values",
       "licenseId": "LEDGER",
       "sourceIds": [
@@ -41,9 +41,29 @@
       ]
     },
     {
+      "path": "ascent-portrait-v2.jpg",
+      "sha256": "c0edcada07a5d1dd1d7c5e2194e3cf1cca2016660d5e4b04bb35cd4a5d00be56",
+      "bytes": 211019,
+      "contentType": "image/jpeg",
+      "licenseId": "PROJECT-GENERATED",
+      "sourceIds": [
+        "scroll-to-space:ascent-portrait-v2.jpg"
+      ]
+    },
+    {
+      "path": "nasa-earth-limb.jpg",
+      "sha256": "40b931b9da87ef4c8581deac368624b468754811ac015c7970becd5fe7595f74",
+      "bytes": 358722,
+      "contentType": "image/jpeg",
+      "licenseId": "NASA-MEDIA-USAGE",
+      "sourceIds": [
+        "scroll-to-space:nasa-earth-limb.jpg"
+      ]
+    },
+    {
       "path": "sw.js",
-      "sha256": "b0d19975af17ea29e0e80dd2b317d37732f1699e278f7d5a899e9fdc569a19da",
-      "bytes": 980,
+      "sha256": "3a2aace2c0d1239d7bba9ceecdb1260bf6d8cd92e1f2fa8c86f48d4465a2f454",
+      "bytes": 1037,
       "contentType": "text/javascript",
       "licenseId": "MIT",
       "sourceIds": [
@@ -62,5 +82,5 @@
       "outputSha256": "a15f0673ca67d4eb74dac83d15520c4856515843c87081b9c712e3e763be6857"
     }
   ],
-  "totalBytes": 1845173
+  "totalBytes": 2415285
 }
