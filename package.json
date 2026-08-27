@@ -6,12 +6,16 @@
   "description": "D2-entry engineering workspace for five Eazo mobile-first experiences.",
   "license": "MIT",
   "packageManager": "pnpm@11.24.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "engines": {
     "node": ">=24.20.0 <27",
     "pnpm": "11.24.0"
   },
   "scripts": {
-    "build": "pnpm --filter @eazo/scroll-to-space build",
+    "build": "npm run build --workspace=@eazo/scroll-to-space",
     "dev": "pnpm --filter @eazo/scroll-to-space dev",
     "typecheck": "pnpm -r --if-present typecheck",
     "lint": "oxlint --no-ignore --deny-warnings packages apps tests scripts",
